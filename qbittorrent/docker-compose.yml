@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 
 services:
   qbittorrent:
@@ -10,7 +10,7 @@ services:
       - TZ=Europe/Madrid
       - WEBUI_PORT=8080
       - WEBUI_USER=admin
-      - WEBUI_PASS=j.Admin2709
+      - WEBUI_PASS=passwd
     volumes:
       - /home/j4ngx/app-data/qbittorrent/config:/config
       - /media/films:/downloads
@@ -26,10 +26,40 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Europe/Madrid
     volumes:
       - /home/j4ngx/app-data/jackett/config:/config
       - /home/j4ngx/app-data/qbittorrent/config/torrent-files:/downloads
     ports:
       - 9117:9117
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/j4ngx/app-data/radarr:/config
+      - /media/films/movies:/movies
+      - /media/films:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/j4ngx/app-data/sonarr:/config
+      - /media/films/shows:/tv
+      - /media/films:/downloads
+    ports:
+      - 8989:8989
     restart: unless-stopped

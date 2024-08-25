@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    environment:
+      TZ: 'Europe/Madrid'
+      WEBPASSWORD: 'passwd'
+      DNSMASQ_LISTENING: 'all'
+      DNS1: '8.8.8.8'  
+      DNS2: '8.8.4.4'
+    volumes:
+      - '/home/j4ngx/app-data/pihole/etc:/etc/pihole'
+      - '/home/j4ngx/app-data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '80:80/tcp'
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
