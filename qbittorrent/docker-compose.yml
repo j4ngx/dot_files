@@ -12,10 +12,24 @@ services:
       - WEBUI_USER=admin
       - WEBUI_PASS=j.Admin2709
     volumes:
-      - ${APP_DATA}/qbittorrent/config:/config
-      - ${MEDIA_FOLDER}:/downloads
+      - /home/j4ngx/app-data/qbittorrent/config:/config
+      - /media/films:/downloads
     ports:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
+    restart: unless-stopped
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/j4ngx/app-data/jackett/config:/config
+      - /home/j4ngx/app-data/qbittorrent/config/torrent-files:/downloads
+    ports:
+      - 9117:9117
     restart: unless-stopped

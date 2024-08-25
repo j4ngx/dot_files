@@ -9,9 +9,9 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - ${APP_DATA}/jellifin/config:/config
-      - ${MEDIA_FOLDER}/movies:/media/movies
-      - ${MEDIA_FOLDER}/shows:/media/shows
+      - /home/j4ngx/app-data/jellifin/config:/config
+      - /media/films/movies:/media/movies
+      - /media/films/shows:/media/shows
     ports:
       - 8096:8096
       - 8920:8920

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install ZSH 
-sudo apt install -y zsh
+sudo apt install -y zsh lsd bat
 zhs --version
 
 # Change SHELL
