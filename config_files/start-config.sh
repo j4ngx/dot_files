@@ -19,12 +19,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM}/plu
 git clone https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo ${ZSH_CUSTOM}/plugins/sudo
 
 # Copy .zshrc to home directory
-cp .zshrc ~/
+cp zshrc ~/.zshrc
 
 # Install PowerLevel10K
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k
 
-cp .p10k.zsh ~/
+cp p10k.zsh ~/.p10k.zsh
 
 # Reload zshrc configuration
 source ~/.zshrc
