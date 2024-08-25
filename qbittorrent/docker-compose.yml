@@ -7,13 +7,13 @@ services:
     environment:
       - PUID=1000  
       - PGID=1000  
-      - TZ=Europe/Madrid  # Ajusta esto según tu zona horaria
+      - TZ=Europe/Madrid
       - WEBUI_PORT=8080
-      - WEBUI_USER=admin  # Configurar el usuario del WebUI
+      - WEBUI_USER=admin
       - WEBUI_PASS=j.Admin2709
     volumes:
-      - /path/to/config:/config
-      - /media/films/DiscoFilm:/downloads
+      - ${APP_DATA}/qbittorrent/config:/config
+      - ${MEDIA_FOLDER}:/downloads
     ports:
       - 8080:8080
       - 6881:6881

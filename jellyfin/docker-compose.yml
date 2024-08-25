@@ -9,8 +9,9 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - /media/films/jellifin-config:/config
-      - /media/films/DiscoFilm:/media/movies
+      - ${APP_DATA}/jellifin/config:/config
+      - ${MEDIA_FOLDER}/movies:/media/movies
+      - ${MEDIA_FOLDER}/shows:/media/shows
     ports:
       - 8096:8096
       - 8920:8920
