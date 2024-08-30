@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: code-server
+    environment:
+      - PASSWORD=yourpassword
+    volumes:
+      - /media/nas/Shared/projects:/home/coder/project:rw  # Mount the projects directory
+    ports:
+      - "8443:8443"
+    restart: unless-stopped
