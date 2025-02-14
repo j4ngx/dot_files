@@ -7,8 +7,6 @@ sudo apt install -y zsh lsd bat curl
 
 zsh --version
 
-chsh -s $(which zsh)
-
 if [ $SHELL == "/bin/zsh" ]; then
     echo "ZSH is already the default shell."
 else
@@ -18,20 +16,10 @@ else
 fi
 
 # Install OH-MY-ZSH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || {
-    echo "Failed to install OH-MY-ZSH. Please check your internet connection or the URL."
-    exit 1
-}
-
-# Source the .zshrc to apply changes without exiting the script
-source ~/.zshrc || {
-    echo "Failed to source .zshrc. Please check the file for errors."
-    exit 1
-}
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" ||  true
 
 # Continue executing the script
 echo "Continuing with the rest of the script..."
-
 
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
