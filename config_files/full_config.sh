@@ -18,7 +18,19 @@ else
 fi
 
 # Install OH-MY-ZSH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || {
+    echo "Failed to install OH-MY-ZSH. Please check your internet connection or the URL."
+    exit 1
+}
+
+# Source the .zshrc to apply changes without exiting the script
+source ~/.zshrc || {
+    echo "Failed to source .zshrc. Please check the file for errors."
+    exit 1
+}
+
+# Continue executing the script
+echo "Continuing with the rest of the script..."
 
 
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
@@ -27,7 +39,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM}/plu
 git clone https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo ${ZSH_CUSTOM}/plugins/sudo
 
 git clone https://github.com/heapbytes/heapbytes-zsh $ZSH_CUSTOM/themes/heapbytes
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="heapbytes"/g' ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="heapbytes/heapbytes"/g' ~/.zshrc
 cp -r ./heapbytes $ZSH_CUSTOM/themes/heapbytes/heapbytes.zsh-theme
 
 mkdir -p $HOME/app-data
