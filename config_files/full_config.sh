@@ -26,12 +26,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
 git clone https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo ${ZSH_CUSTOM}/plugins/sudo
 
-if [ -f ./zshrc ]; then
-    cp ./zshrc ~/.zshrc
-else
-    echo ".zshrc file not found in the current directory."
-fi
-
 git clone https://github.com/heapbytes/heapbytes-zsh $ZSH_CUSTOM/themes/heapbytes
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="heapbytes"/g' ~/.zshrc
 cp -r ./heapbytes $ZSH_CUSTOM/themes/heapbytes/heapbytes.zsh-theme
