@@ -32,3 +32,4 @@ cp -r ./heapbytes $ZSH_CUSTOM/themes/heapbytes/heapbytes.zsh-theme
 
 mkdir -p $HOME/app-data
 
+zsh
